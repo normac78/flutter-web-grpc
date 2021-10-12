@@ -5,6 +5,7 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 proto_library(
     name = "bookshelf_proto",
     srcs = ["bookshelf.proto"],
+    deps = ["@com_google_protobuf//:empty_proto"],
 )
 
 go_proto_library(
