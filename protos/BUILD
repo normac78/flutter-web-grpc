@@ -3,14 +3,15 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
 # gazelle:proto disable
 proto_library(
-    name = "bookshelf_proto",
-    srcs = ["bookshelf.proto"],
-    deps = ["@com_google_protobuf//:empty_proto"],
+    name = "movies_proto",
+    srcs = ["movies.proto"],
+    deps = [],
 )
 
 go_proto_library(
-    name = "bookshelf_proto_go",
-    importpath = "github.com/normac78/flutter-web-grpc/protos/bookshelf_proto_go",
-    protos = [":bookshelf_proto"],
+    name = "movies_proto_go",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/normac78/flutter-web-grpc/protos/movies_proto_go",
+    protos = [":movies_proto"],
     visibility = ["//visibility:public"],
 )

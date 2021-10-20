@@ -1,0 +1,45 @@
+syntax = "proto3";
+option go_package = "github.com/normac78/flutter-web-grpc/protos/movie_proto_go";
+
+package movies;
+
+service Theater {
+    rpc ListMovies(ListMoviesRequest) returns (ListMoviesResponse) {}
+    rpc CreateMovie(Movie) returns (RequestStatus) {}
+    rpc GetMovie(MovieRequest) returns (Movie) {}
+    rpc DeleteMovie(MovieRequest) returns (RequestStatus) {}
+}
+
+message RequestStatus {
+  enum StatusCode {
+    SUCCESS = 0;
+    FAILED = 1;
+  }
+
+  StatusCode code = 1;
+}
+
+message Person {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Movie {
+  int64 id = 1;
+  string name = 2;
+  repeated Person actors = 3;
+  Person director = 4;
+  string streaming_url = 5;
+}
+
+message MovieRequest {
+  int64 id = 1;
+}
+
+message ListMoviesRequest {
+  repeated int64 ids = 1;
+}
+
+message ListMoviesResponse {
+  repeated Movie movies = 1;
+}

@@ -1,10 +1,4 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test", "go_binary")
-
-# go_binary(
-#     name = "main",
-#     embed = [":server_lib"],
-#     visibility = ["//visibility:public"],
-# )
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
 
 go_binary(
     name = "main",
@@ -17,9 +11,14 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/normac78/flutter-web-grpc/server",
     visibility = ["//visibility:private"],
+    deps = [
+        "//protos:movies_proto_go",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
 )
 
 go_test(
-    name = "main_test",
+    name = "server_test",
     srcs = ["main_test.go"],
+    embed = [":server_lib"],
 )
