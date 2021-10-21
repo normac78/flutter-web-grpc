@@ -20,8 +20,7 @@ message RequestStatus {
 }
 
 message Person {
-  int64 id = 1;
-  string name = 2;
+  string name = 1;
 }
 
 message Movie {
@@ -29,7 +28,9 @@ message Movie {
   string name = 2;
   repeated Person actors = 3;
   Person director = 4;
-  string streaming_url = 5;
+  string poster_url = 5;
+  string trailer_url = 6;
+  int64 release_year = 7;
 }
 
 message MovieRequest {
