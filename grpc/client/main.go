@@ -67,6 +67,23 @@ func main() {
 		}
 	}
 
+	// GetMovie
+	best_movie_request := movies_proto.MovieRequest{Id: 1}
+	best_movie, err := c.GetMovie(ctx, &best_movie_request)
+	if err != nil {
+		log.Printf("GetMovie failed: %s", err)
+	} else {
+		log.Println(best_movie)
+	}
+
+	// DeleteMovie
+	deleted_movie_resp, err := c.DeleteMovie(ctx, &best_movie_request)
+	if err != nil {
+		log.Printf("DeleteMovie failed: %s", err)
+	} else {
+		log.Println(deleted_movie_resp)
+	}
+
 	// ListMovies
 	movie_list := &movies_proto.ListMoviesRequest{
 		Ids: []int64{0, 1, 2},

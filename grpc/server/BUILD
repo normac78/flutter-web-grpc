@@ -9,11 +9,14 @@ go_binary(
 go_library(
     name = "server_lib",
     srcs = ["main.go"],
-    importpath = "github.com/normac78/flutter-web-grpc/server",
+    importpath = "github.com/normac78/flutter-web-grpc/grpc/server",
     visibility = ["//visibility:private"],
     deps = [
         "//protos:movies_proto_go",
         "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_protobuf//encoding/protojson",
+        "@org_golang_google_protobuf//proto",
+        "@org_modernc_sqlite//:sqlite",
     ],
 )
 

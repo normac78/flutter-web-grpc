@@ -1,3 +1,5 @@
+// "I'll add tests later"
+//              -Everyone
 package main
 
 import (
