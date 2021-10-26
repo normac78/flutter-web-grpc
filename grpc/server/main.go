@@ -111,7 +111,6 @@ func (s *server) CreateMovie(ctx context.Context, in *movies_proto.Movie) (*movi
 func (s *server) GetMovie(ctx context.Context, in *movies_proto.MovieRequest) (*movies_proto.Movie, error) {
 	log.Printf("Received: %v", in)
 	var (
-		// movie_id       int64
 		movie_pb       movies_proto.Movie
 		movie_pb_bytes []byte
 	)

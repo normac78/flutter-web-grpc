@@ -1,4 +1,5 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
 
 go_binary(
     name = "main",
@@ -18,6 +19,11 @@ go_library(
         "@org_golang_google_protobuf//proto",
         "@org_modernc_sqlite//:sqlite",
     ],
+)
+
+go_image(
+    name = "image",
+    embed = [":server_lib"],
 )
 
 go_test(
