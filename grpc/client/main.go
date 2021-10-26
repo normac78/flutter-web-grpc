@@ -59,11 +59,11 @@ func main() {
 
 	// CreateMovie
 	for i := range movie_pbs {
-		_, err = c.CreateMovie(ctx, &movie_pbs[i])
+		resp, err := c.CreateMovie(ctx, &movie_pbs[i])
 		if err != nil {
 			log.Fatalf("CreateMovie failed:", err)
 		} else {
-			log.Printf("Successfully created movie '%s'.", movie_pbs[i].Name)
+			log.Printf("CreateMovie completed with code: %s for movie %s", resp.Code, movie_pbs[i].Name)
 		}
 	}
 

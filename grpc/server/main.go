@@ -72,6 +72,7 @@ func (s *server) CreateMovie(ctx context.Context, in *movies_proto.Movie) (*movi
 	log.Printf("Creating entry for movie: %v", in.Name)
 
 	var (
+		create_status  movies_proto.RequestStatus
 		movie_json     []byte
 		movie_pb_bytes []byte
 	)
@@ -79,11 +80,13 @@ func (s *server) CreateMovie(ctx context.Context, in *movies_proto.Movie) (*movi
 	movie_pb_bytes, err := proto.Marshal(in)
 	if err != nil {
 		log.Printf("Failed to serialize input proto to bytes: %s", err)
+		create_status.Code = 1
 	}
 
 	movie_json, err = protojson.Marshal(in)
 	if err != nil {
 		log.Printf("Failed to serialize input proto to JSON: %s", err)
+		create_status.Code = 1
 	}
 
 	_, err = DB.Exec(
@@ -98,9 +101,10 @@ func (s *server) CreateMovie(ctx context.Context, in *movies_proto.Movie) (*movi
 
 	if err != nil {
 		log.Printf("INSERT failed: %s", err)
+		create_status.Code = 1
 	}
 
-	return &movies_proto.RequestStatus{}, nil
+	return &create_status, nil
 }
 
 // GetMovie implements movies_proto.GetMovie
