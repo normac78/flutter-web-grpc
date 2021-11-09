@@ -8,7 +8,7 @@ import 'package:theater_app/src/generated/movies.pbgrpc.dart';
 const theaterHost = String.fromEnvironment('GOHOME_HOST',
     defaultValue: 'http://localhost:8081');
 
-TheaterClient initGoHomeClient() {
+TheaterClient initTheaterClient() {
   final channel = GrpcWebClientChannel.xhr(Uri.parse(theaterHost));
   final goHomeStub = TheaterClient(
     channel,

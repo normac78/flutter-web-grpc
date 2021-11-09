@@ -15,11 +15,12 @@ cd ..;
 ## Run images
 ```
 docker run --name theater_server -d -p 50051:50051 theater_server:latest;
-docker run --name theater_proxy -d -p 8081:8081 theater_proxy:latest;
+docker run --name theater_proxy -d -p 8081:8081 -p 9901:9901 theater_proxy:latest;
 docker run --name theater_frontend -d -p 8080:80 theater_frontend:latest
 ```
 
-Navigate to http://127.0.0.1:8080 to interact with the Flutter frontend.
+Navigate to http://127.0.0.1:8080 to interact with the Flutter frontend or
+http://127.0.0.1:9901 to see the Envoy Proxy admin panel.
 
 ## Stop running images
 ```
