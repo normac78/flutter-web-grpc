@@ -73,16 +73,16 @@ func main() {
 	if err != nil {
 		log.Printf("GetMovie failed: %s", err)
 	} else {
-		log.Println(best_movie)
+		log.Printf("GetMovie successful for: %s", best_movie.Name)
 	}
 
 	// DeleteMovie
-	deleted_movie_resp, err := c.DeleteMovie(ctx, &best_movie_request)
-	if err != nil {
-		log.Printf("DeleteMovie failed: %s", err)
-	} else {
-		log.Println(deleted_movie_resp)
-	}
+	// deleted_movie_resp, err := c.DeleteMovie(ctx, &best_movie_request)
+	// if err != nil {
+	// 	log.Printf("DeleteMovie failed: %s", err)
+	// } else {
+	// 	log.Println(deleted_movie_resp)
+	// }
 
 	// ListMovies
 	movie_list := &movies_proto.ListMoviesRequest{
@@ -92,6 +92,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("ListMovies failed:", err)
 	} else {
-		log.Println(movie_list_pb)
+		log.Printf("ListMovies returned %d movies", len(movie_list_pb.Movies))
 	}
 }
