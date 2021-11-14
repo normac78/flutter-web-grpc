@@ -35,7 +35,7 @@ class TheaterHome extends StatelessWidget {
               body: Center(
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: 700.0,
+                    height: MediaQuery.of(context).size.height - 100,
                     aspectRatio: 16 / 10,
                   ),
                   items: snapshot.data?.movies.map((movie) {
