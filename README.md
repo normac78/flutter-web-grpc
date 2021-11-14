@@ -1,6 +1,8 @@
 # flutter-web-grpc
 Example Golang gRPC server, Envoy proxy and Flutter frontend.
 
+![Example of UI in action](https://github.com/normac78/flutter-web-grpc/raw/main/docs/images/overview.gif)
+
 ## Run with Docker
 If you have [Docker](https://www.docker.com/) installed, simply pull and run
 from [Docker Hub](https://hub.docker.com/repository/docker/normac78/flutter-web-grpc).
