@@ -34,3 +34,5 @@ This service utilizes a typical microservice architecture.  Docker is used as
 the image format, which makes this an easy service to deploy directly on managed
 container services like [AWS Fargate](https://aws.amazon.com/fargate/) or
 [Google Cloud Run](https://cloud.google.com/run).
+
+![Architecture diagram](https://github.com/normac78/flutter-web-grpc/raw/main/docs/images/design.png)
